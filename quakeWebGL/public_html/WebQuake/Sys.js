@@ -6,16 +6,20 @@ Sys.Quit = function()
 {
     if (Sys.frame != null)
         clearInterval(Sys.frame);
+    
     var i;
     for (i = 0; i < Sys.events.length; ++i)
         window[Sys.events[i]] = null;
+    
     Host.Shutdown();
     document.body.style.cursor = 'auto';
     VID.mainwindow.style.display = 'none';
+    
     if (COM.registered.value !== 0)
         document.getElementById('end2').style.display = 'inline';
     else
         document.getElementById('end1').style.display = 'inline';
+    
     throw new Error;
 };
 
@@ -147,6 +151,8 @@ window.onload = function()
     for (i = 0; i < Sys.events.length; ++i)
         window[Sys.events[i]] = Sys[Sys.events[i]];
 
+    //Alla fine dell'inizializzazione di tutti gli elementi grafici e non andiamo ad eseguire quello che è il loop
+    // principale di rendering delle immagine
     Sys.frame = setInterval(Host.Frame, 1000.0 / 60.0);
 };
 

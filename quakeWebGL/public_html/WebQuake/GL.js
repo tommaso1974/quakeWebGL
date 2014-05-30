@@ -64,6 +64,8 @@ GL.ortho = [
 
 GL.Set2D = function()
 {
+    var picchio = (VID.width * SCR.devicePixelRatio) >> 0;
+    var piripicchio = (VID.height * SCR.devicePixelRatio) >> 0
     gl.viewport(0, 0, (VID.width * SCR.devicePixelRatio) >> 0, (VID.height * SCR.devicePixelRatio) >> 0);
     GL.UnbindProgram();
     var i, program;
