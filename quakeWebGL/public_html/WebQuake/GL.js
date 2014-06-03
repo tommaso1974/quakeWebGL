@@ -64,8 +64,6 @@ GL.ortho = [
 
 GL.Set2D = function()
 {
-    var picchio = (VID.width * SCR.devicePixelRatio) >> 0;
-    var piripicchio = (VID.height * SCR.devicePixelRatio) >> 0
     gl.viewport(0, 0, (VID.width * SCR.devicePixelRatio) >> 0, (VID.height * SCR.devicePixelRatio) >> 0);
     GL.UnbindProgram();
     var i, program;
@@ -312,7 +310,7 @@ GL.UseProgram = function(identifier)
 
 GL.UnbindProgram = function()
 {
-    if (GL.currentprogram == null)
+    if (GL.currentprogram === null)
         return;
     var i;
     for (i = 0; i < GL.currentprogram.attribs.length; ++i)
@@ -320,7 +318,9 @@ GL.UnbindProgram = function()
     GL.currentprogram = null;
 };
 
-GL.identity = [1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0];
+GL.identity = [ 1.0, 0.0, 0.0, 
+                0.0, 1.0, 0.0, 
+                0.0, 0.0, 1.0 ];
 
 GL.RotationMatrix = function(pitch, yaw, roll)
 {
@@ -349,7 +349,7 @@ GL.Init = function()
     }
     catch (e) {
     }
-    if (gl == null)
+    if (gl === null)
         Sys.Error('Unable to initialize WebGL. Your browser may not support it.');
 
     gl.clearColor(0.0, 0.0, 0.0, 0.0);
