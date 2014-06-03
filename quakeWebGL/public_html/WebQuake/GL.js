@@ -310,8 +310,9 @@ GL.UseProgram = function(identifier)
 
 GL.UnbindProgram = function()
 {
-    if (GL.currentprogram === null)
+    if (GL.currentprogram == null)
         return;
+    
     var i;
     for (i = 0; i < GL.currentprogram.attribs.length; ++i)
         gl.disableVertexAttribArray(GL.currentprogram[GL.currentprogram.attribs[i]]);
