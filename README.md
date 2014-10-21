@@ -1,4 +1,4 @@
 quakeWebGL
 ==========
 
-porti di quake in javascript
+porti di quake in javascript. utilizzato per studiare il webgl
